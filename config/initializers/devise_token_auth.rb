@@ -11,6 +11,12 @@ DeviseTokenAuth.setup do |config|
   # determines how long tokens will remain valid after they are issued.
   config.token_lifespan = 2.weeks
 
+  # if Rails.env.development?
+  #   config.default_confirm_success_url = 'http://localhost:3000'
+  # else
+  #   config.default_confirm_success_url = 'http://localhost:3000'
+  # end
+
   # Limiting the token_cost to just 4 in testing will increase the performance of
   # your test suite dramatically. The possible cost value is within range from 4
   # to 31. It is recommended to not use a value more than 10 in other environments.

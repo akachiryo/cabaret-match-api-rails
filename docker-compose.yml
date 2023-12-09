@@ -24,5 +24,19 @@ services:
       MYSQL_ROOT_PASSWORD: password
       TZ: Asia/Tokyo
 
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: mailcatcher
+    ports:
+      - '1080:1080'
+      - '1025:1025'
+    networks:
+      - default
+      - snowboard_default
+
+networks:
+  snowboard_default:
+    external: true
+
 volumes:
   db_data:
