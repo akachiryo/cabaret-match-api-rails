@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  # ログイン機能のルーティング
-  mount_devise_token_auth_for 'Host', at: 'auth', controllers: {
-    registrations: 'auth/registrations'
+  mount_devise_token_auth_for 'Host', at: 'api/v1/hosts/auth', controllers: {
+    registrations: 'api/v1/hosts/auth/registrations',
+    confirmations: 'api/v1/hosts/auth/confirmations',
+    sessions: 'api/v1/hosts/auth/sessions'
   }
-  # ログインユーザー取得のルーティング
-  namespace :auth do
-    resources :sessions, only: %i[index]
+  namespace :api do
+    namespace :v1 do
+      resources :hosts, only: [:index], controller: 'hosts/users'
+    end
   end
 end

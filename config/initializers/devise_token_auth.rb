@@ -11,11 +11,11 @@ DeviseTokenAuth.setup do |config|
   # determines how long tokens will remain valid after they are issued.
   config.token_lifespan = 2.weeks
 
-  # if Rails.env.development?
-  #   config.default_confirm_success_url = 'http://localhost:3000'
-  # else
-  #   config.default_confirm_success_url = 'http://localhost:3000'
-  # end
+  if Rails.env.development?
+    config.default_confirm_success_url = 'http://localhost:3000/api/v1/hosts/auth/confirmation'
+  else
+    config.default_confirm_success_url = 'http://localhost:3000/api/v1/hosts/auth/confirmation'
+  end
 
   # Limiting the token_cost to just 4 in testing will increase the performance of
   # your test suite dramatically. The possible cost value is within range from 4
@@ -68,5 +68,5 @@ DeviseTokenAuth.setup do |config|
   # By default DeviseTokenAuth will not send confirmation email, even when including
   # devise confirmable module. If you want to use devise confirmable module and
   # send email, set it to true. (This is a setting for compatibility)
-  # config.send_confirmation_email = true
+  config.send_confirmation_email = true
 end
